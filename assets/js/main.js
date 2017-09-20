@@ -1,3 +1,6 @@
+var entrada = "";
+var resposta =  document.getElementsByClassName("resposta")[0].value;
+
 (function() {
 	let ui = {
 		letters: document.querySelectorAll('.letters__card'),
@@ -10,6 +13,8 @@
 
 	var printValue = function(elementSelected, location) {
 		let newLetter = elementSelected.innerText;
+
+		entrada += newLetter;
 		return ui.answer.innerText = ui.answer.innerText + newLetter;
 	}
 
@@ -25,5 +30,17 @@
 			letter.addEventListener('click', selectLetter);
 		});
 	}();
-
 })();
+
+function validaResposta() {
+	if (entrada.localeCompare(resposta) == 0){
+		alert("ACERTOU!");
+	}
+}
+
+function reinicia() {
+	//console.log(document.querySelector('.object__name'));
+	//elementSelected.classList.toggle('letters__card--selected')
+	document.querySelector('.object__name').innerText = "";
+	entrada = "";
+}
