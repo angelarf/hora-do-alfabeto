@@ -8,34 +8,27 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
 </head>
 <body>
-	<div class="container">
+	<!--<div class="container">
 		<img src="https://goo.gl/Fj2P2k">
-		<h1 class="titulo">Alfabetização</h1>
-	</div>
-	<div class="container">
-		<figure class="object">
-			<img class="object__image" src="https://goo.gl/MDwS61" alt="uva">
-			<figcaption class="object__name"></figcaption>
-			<input type="hidden" class="resposta" value="UVA"></input>
-		</figure>
+		<h1 class="page-title">Alfabetização</h1>
+	</div>-->
+	<div class="game-container">
+		<div class="object">
+			<figure class="object__image">
+				<!-- image will be created automatically -->
+			</figure>
+			<span class="object__name" type="text" readonly="true"></span>
+			<div>
+				<button type="button" class="button button--send">Enviar</button>
+				<button type="button" class="button button--reset">Limpar</button>
+			</div>			
+		</div>
+
 		<div class="letters">
-			<span class="letters__card"> A </span>
-			<span class="letters__card"> V </span>
-			<span class="letters__card"> U </span>
-			<span class="letters__card"> T </span>
-			<span class="letters__card"> C </span>
-			<span class="letters__card"> A </span>
-			<span class="letters__card"> R </span>
-			<span class="letters__card"> Y </span>
-			<span class="letters__card"> R </span>
-			<span class="letters__card"> Y </span>
+			<!-- Letters will be created automatically -->
 		</div>
 	</div>
 
-	<div class="esquerda">
-		<button class="button button_ok" onclick="validaResposta()">Enviar</button>
-		<button class="button button_reset" onclick="reinicia()">Limpar</button>
-	</div>
 
 	<script src="assets/js/main.js" type="text/javascript"></script>
 </body>

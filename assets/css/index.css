@@ -1,124 +1,126 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
-  margin: 20px auto 0;
-  font-size: 32px;
-  font-family: 'Apple Chancery', cursive;
-  text-transform: uppercase;
-
+.game-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	max-width: 900px;
+	margin: 20px auto 0;
+	font-size: 32px;
+	font-family: 'Comic sans MS', 'Verdana', cursive;
+	text-transform: uppercase;
 }
 
 .object {
-  flex-shrink: 0;
-  flex-basis: 280px;
+	flex-shrink: 0;
+	flex-basis: 280px;
 
-  display: flex;
-  align-items: flex-end;
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: wrap;
 }
+
 .object__image {
-  width: 100px;
-}
-.object__name {
-  margin: 0 15px;
-  width: 100%;
-  border-bottom: 3px solid #4682B4;
-  text-align: center;
-  color: #4682B4;
+	width: 100px;
+	height: 100px;
 }
 
+.object__image img {
+	width: 100%;
+}
+
+.object__name {
+	flex-basis: 60%;
+	flex-grow: 1;
+	margin: 0 15px;
+	border-bottom: 3px solid #4682B4;
+	text-align: center;
+	color: #4682B4;
+}
+
+.object__buttons {
+	flex-basis: 100%;
+}
 
 .letters {
-  flex: 2 0 280px;
+	flex: 2 0 280px;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 
-  max-width: 700px;
-  margin: auto;
-  padding-top: 15px;
+	max-width: 700px;
+	margin: auto;
+	padding-top: 15px;
 
-  border: solid #EAEAEA 1px;
-  border-radius: 5px;
-  box-shadow: 0 3px 5px rgba(0,0,0, 0.15);
+	border: solid #EAEAEA 1px;
+	border-radius: 5px;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
 
 .letters__card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-  cursor: pointer;
-  border: #000 solid 2px;
-  border-radius: 3px;
-  margin: 0 10px 15px 0;
-  width: 80px;
-  height: 80px;
+	cursor: pointer;
+	border: #000 solid 2px;
+	border-radius: 3px;
+	margin: 0 10px 15px 0;
+	width: 80px;
+	height: 80px;
 
-  transition: color, border-color;
-  transition-duration: 0.3s;
+	transition: color, border-color;
+	transition-duration: 0.3s;
 }
 
 .letters__card--selected {
-  will-change: color, border-color;
-  color: #4682B4;
-  border-color: #4682B4;
+	will-change: color, border-color;
+	color: #4682B4;
+	border-color: #4682B4;
 }
 
-.esquerda {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: left;
-    max-width: 900px;
-    margin: 20px auto 0;
-    font-size: 32px;
-    font-family: 'Apple Chancery', cursive;
-}
 .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
+	background-color: white;
+	border: 2px solid;
+	color: black;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 4px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
 
-.button_ok {
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50;
+.button--send {
+	border-color: #4CAF50;
 }
 
-.button_ok:hover {
-    background-color: #4CAF50;
-    color: white;
+.button--send:hover {
+	background-color: #4CAF50;
+	color: white;
 }
 
-.button_reset {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
+.button--reset {
+	border-color: #e7e7e7;
 }
 
-.button_reset:hover {background-color: #e7e7e7;}
+.button--reset:hover {
+	background-color: #e7e7e7;
+}
 
-.titulo {
-    font-weight: bold;
-    letter-spacing: 0pt;
-    text-align: left;
-    font-family: trebuchet MS, sans-serif;
-    line-height: 1;
-    margin: 29px;
-    padding: 13px;
+.page-title {
+	font-weight: bold;
+	letter-spacing: 0pt;
+	text-align: left;
+	font-family: trebuchet MS, sans-serif;
+	line-height: 1;
+	margin: 29px;
+	padding: 13px;
 }
