@@ -26,6 +26,30 @@
 		{
 			name: 'gato',
 			imageSrc: 'assets/img/gato.png'
+		},
+		{
+			name: 'arvore',
+			imageSrc: 'assets/img/arvore.png'
+		},
+		{
+			name: 'presente',
+			imageSrc: 'assets/img/presente.gif'
+		},
+		{
+			name: 'urso',
+			imageSrc: 'assets/img/urso.png'
+		},
+		{
+			name: 'vaca',
+			imageSrc: 'assets/img/vaca.png'
+		},
+		{
+			name: 'peixe',
+			imageSrc: 'assets/img/peixe.png'
+		},
+		{
+			name: 'lanche',
+			imageSrc: 'assets/img/lanche.png'
 		}
 	];
 
@@ -37,7 +61,7 @@
 		return ui.letters = document.querySelectorAll('.letters__card');
 	}
 
-	//Returns a random letter from array alphabet. 
+	//Returns a random letter from array alphabet.
 	var getRandomLetter = function() {
 		return alphabet[Math.floor(Math.random() * (alphabet.length))];
 	}
@@ -133,7 +157,7 @@
 			return endGame();
 		} else {
 			return setupLevel();
-		}		
+		}
 	}
 
 	//Clear the answer
@@ -159,7 +183,7 @@
 		//return resetLevel();
 	}
 
-	// Validate the answer. If it's correct go to next level, otherwise 'tryAgain' 
+	// Validate the answer. If it's correct go to next level, otherwise 'tryAgain'
 	var validateAnswer = function(e) {
 		e.preventDefault();
 
@@ -170,12 +194,12 @@
 
 	//Initialize the level
 	var setupLevel = function() {
-		
+
 		clearAnswer();
 		printObject();
 		createLetters(getObjectName(), 15);
 		getLetters();
-		
+
 		Array.prototype.forEach.call(ui.letters, function(letter) {
 			letter.addEventListener('click', selectLetter);
 		});
