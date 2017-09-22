@@ -2,8 +2,8 @@
 	//Elements of interface
 	let ui = {
 		lettersContainer: document.querySelector('.letters'),
-		image: document.querySelector('.object__image'),
-		answer: document.querySelector('.object__name'),
+		image: document.querySelector('.answer__image'),
+		answer: document.querySelector('.answer-js'),
 		btnSend: document.querySelector('.button--send'),
 		btnReset: document.querySelector('.button--reset')
 	}
@@ -64,37 +64,108 @@
 	}
 
 	//Choose letters that will be displayed.
-	var createLetters = function(objectName, quantity) {
+	var createLetters = function(objectName, gridLength) {
 		let choosenLetters = [];
+		let quantity;
 
-		//To-do: verificacao de quantidade > letras do objectName
+		//Choose the ramdom letters.
+		if (gridLength > objectName.length) {
+			quantity = gridLength - objectName.length;
 
-		for (var i=0; i < quantity - objectName.length; i++) {
-			choosenLetters.push(getRandomLetter());
+			for (var i=0; i < quantity; i++) {
+				choosenLetters.push(getRandomLetter());
+			}
+
+		} else {
+			quantity = gridLength;
 		}
 
+		//It inserts he letters the of the object's name.
 		objectName.forEach(function(letter) {
-			choosenLetters.splice(Math.floor(Math.random() * choosenLetters.length), 0, letter);
+			choosenLetters.splice(Math.floor(Math.random() * quantity), 0, letter);
 		});
 
 		return generateHTMLcode(choosenLetters);
 	}
 
-	//Print the Value of the selected letter
-	var printValue = function(elementSelected, location) {
-		let newLetter = elementSelected.innerText;
+	//Print the Value of the selected letter in the html element.
+	var printValue = function(text, htmlElement) {
+		return htmlElement.value = htmlElement.value + text;
+	}
 
-		//entrada += newLetter;
-		return ui.answer.innerText = ui.answer.innerText + newLetter;
+	// Remove the last occurence of the text in the htmlElement.
+	var removeValue = function(text, htmlElement) {
+		let index = htmlElement.value.lastIndexOf(text);
+
+		if (index !== -1) {
+			letters = htmlElement.value.split('');
+			letters.splice(index, 1);
+			htmlElement.value = letters.join('');
+		}
+
+		return htmlElement.value;
 	}
 
 	//Select the letter by user
 	var selectLetter = function(e) {
 		let elementSelected = e.target;
-		//To-do: limpar as classes das letras selecionadas
-		toggleClass(elementSelected, 'letters__card--selected');
 
-		return printValue(elementSelected, ui.lettersContainer);
+		//Se a letra já tiver sido selecionada ---> desseleciona. Caso contrario, seleciona.
+		if (elementSelected.classList.contains('letters__card--selected')){
+			removeValue(elementSelected.innerText, ui.answer);
+		} else {
+			printValue(elementSelected.innerText, ui.answer);
+		}
+
+		return toggleClass(elementSelected, 'letters__card--selected');
+	}
+
+	var endGame = function() {
+		alert('Fim do jogo!');
+	}
+
+	//Go to next level
+	var nextLevel = function() {
+		level ++;
+		alert('Acertou!');
+
+		if (level === objects.length) {
+			return endGame();
+		} else {
+			return setupLevel();
+		}		
+	}
+
+	//Clear the answer
+	var clearAnswer = function() {
+		return ui.answer.value = '';
+	}
+
+	//Remove the selected classes
+	var clearClasses = function(list, nameClass) {
+		Array.prototype.forEach.call(list, function(item) {
+			item.classList.remove(nameClass);
+		});
+	}
+
+	//restart the level
+	var resetLevel = function() {
+		clearClasses(ui.letters,'letters__card--selected');
+		return clearAnswer();
+	}
+
+	var tryAgain = function() {
+		alert('You should try again.');
+		//return resetLevel();
+	}
+
+	// Validate the answer. If it's correct go to next level, otherwise 'tryAgain' 
+	var validateAnswer = function(e) {
+		e.preventDefault();
+
+		if (ui.answer.value)
+			return ui.answer.value === getObjectName().join('') ? nextLevel() : tryAgain();
+		return tryAgain();
 	}
 
 	//Initialize the level
@@ -110,41 +181,14 @@
 		});
 	}
 
-	//Go to next level
-	var nextLevel = function() {
-		level ++;
-		alert('Acertou!');
-		return setupLevel();
-	}
-
-	//Clear the answer
-	var clearAnswer = function() {
-		return ui.answer.innerText = '';
-	}
-
-	//restart the level
-	var resetLevel = function() {
-		//To-do: limpar as classes das letras selecionadas
-		return clearAnswer();
-	}
-
-	var tryAgain = function() {
-		alert('You should try again.');
-		return resetLevel();
-	}
-
-	// Validate the answer. If it's correct go to next level, otherwise 'tryAgain' 
-	var validateAnswer = function() {
-		if (ui.answer.innerText)
-			return ui.answer.innerText === getObjectName().join('') ? nextLevel() : tryAgain();
-		return tryAgain();
-	}
-
 	var init = function() {
 		setupLevel();
 
 		ui.btnSend.addEventListener('click', validateAnswer);
-		ui.btnReset.addEventListener('click', clearAnswer);
+		ui.btnReset.addEventListener('click', resetLevel);
+		document.addEventListener('keyup', function (e) {
+			if (e.key === 'Enter') validateAnswer();
+		});
 
 	}();
 })();
