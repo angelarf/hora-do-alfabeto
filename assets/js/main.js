@@ -1,6 +1,8 @@
 (function() {
 	//Elements of interface
 	let ui = {
+		letters: '',
+		menu: document.querySelector('.main-nav__list'),
 		lettersContainer: document.querySelector('.letters'),
 		image: document.querySelector('.answer__image'),
 		answer: document.querySelector('.answer-js'),
@@ -53,6 +55,10 @@
 		}
 	];
 
+	var couldSelect = function() {
+		return ui.answer.value.length < objects[level].name.length;
+	}
+
 	var printObject = function() {
 		return ui.image.innerHTML = '<img src='+ objects[level].imageSrc +' alt='+ objects[level].name +'>';
 	}
@@ -104,7 +110,7 @@
 			quantity = gridLength;
 		}
 
-		//It inserts he letters the of the object's name.
+		//It inserts the letters the of the object's name.
 		objectName.forEach(function(letter) {
 			choosenLetters.splice(Math.floor(Math.random() * quantity), 0, letter);
 		});
@@ -131,38 +137,19 @@
 	}
 
 	//Select the letter by user
-	var selectLetter = function(e) {
+	var toggleSelectLetter = function(e) {
 		let elementSelected = e.target;
 
 		//Se a letra já tiver sido selecionada ---> desseleciona. Caso contrario, seleciona.
 		if (elementSelected.classList.contains('letters__card--selected')){
 			removeValue(elementSelected.innerText, ui.answer);
-		} else {
+		} else if (couldSelect()) {
 			printValue(elementSelected.innerText, ui.answer);
+		} else {
+				return alert('Muitas letras');
 		}
 
 		return toggleClass(elementSelected, 'letters__card--selected');
-	}
-
-	var endGame = function() {
-		alert('Fim do jogo!');
-	}
-
-	//Go to next level
-	var nextLevel = function() {
-		level ++;
-		alert('Acertou!');
-
-		if (level === objects.length) {
-			return endGame();
-		} else {
-			return setupLevel();
-		}
-	}
-
-	//Clear the answer
-	var clearAnswer = function() {
-		return ui.answer.value = '';
 	}
 
 	//Remove the selected classes
@@ -172,10 +159,39 @@
 		});
 	}
 
+	var endGame = function() {
+		//clearClasses(ui.letters,'letters__card--selected');
+		alert('Fim do jogo!');
+	}
+
+	//Go to next level
+	var nextLevel = function() {
+		level++;
+
+		if (level === objects.length) {
+			return endGame();
+		} else {
+			alert('Acertou!');
+			saveLevel(level);
+			return setupLevel();
+		}
+	}
+
+	//Clear the answer
+	var clearAnswer = function() {
+		return ui.answer.value = '';
+	}
+
 	//restart the level
 	var resetLevel = function() {
 		clearClasses(ui.letters,'letters__card--selected');
 		return clearAnswer();
+	}
+
+	// Restart game
+	var restartGame = function() {
+		saveLevel(0);
+		setupLevel();
 	}
 
 	var tryAgain = function() {
@@ -192,6 +208,22 @@
 		return tryAgain();
 	}
 
+	var saveLevel = function(currentLevel) {
+		level = currentLevel;
+		return sessionStorage.setItem('level', level);
+	}
+
+	//Get the current level saved in session storage
+	var getSavedLevel = function() {
+		if(sessionStorage.getItem('level', level)) {
+			return new Number(sessionStorage.getItem('level', level));
+		} else {
+			sessionStorage.setItem('level', 0);
+		}
+
+		return 0;
+	}
+
 	//Initialize the level
 	var setupLevel = function() {
 
@@ -201,18 +233,18 @@
 		getLetters();
 
 		Array.prototype.forEach.call(ui.letters, function(letter) {
-			letter.addEventListener('click', selectLetter);
+			letter.addEventListener('click', toggleSelectLetter);
 		});
 	}
 
 	var init = function() {
+		level = getSavedLevel();
 		setupLevel();
 
 		ui.btnSend.addEventListener('click', validateAnswer);
 		ui.btnReset.addEventListener('click', resetLevel);
 		document.addEventListener('keyup', function (e) {
-			if (e.key === 'Enter') validateAnswer();
+			if (e.key === 'Enter') validateAnswer(e);
 		});
-
 	}();
 })();
