@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angelarf/letters-game.git"
+    "url": "git+https://github.com/angelarf/hora-do-alfabeto.git"
   },
   "keywords": [
     "jogo",
@@ -19,9 +19,9 @@
   "author": "Angela Ferreira",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angelarf/letters-game/issues"
+    "url": "https://github.com/angelarf/hora-do-alfabeto/issues"
   },
-  "homepage": "https://github.com/angelarf/letters-game#readme",
+  "homepage": "https://github.com/angelarf/hora-do-alfabeto#readme",
   "browserslist": [
     "last 2 versions",
     ">= 5%"

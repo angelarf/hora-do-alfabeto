@@ -1,4 +1,4 @@
-# letters-game
+# Hora do Alfabeto
 Atividade para estimular as crianças no processo de alfabetização.
 
 # Como usar
