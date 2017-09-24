@@ -13,6 +13,7 @@
 	}
 
 	let level = 0;
+	let alertTime = 5000;
 	let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	let objects = [
 		{
@@ -163,7 +164,7 @@
 				showAlert('atention');
 				setTimeout(function(){
 					hideAlert('atention');
-				}, 2000);
+				}, alertTime);
 
 				return;
 		}
@@ -200,7 +201,7 @@
 			var timeoutID = setTimeout(function () {
 				hideAlert('success');
 				setupLevel();
-			}, 2000);
+			}, alertTime);
 
 			return saveLevel(level);
 		}
@@ -228,7 +229,7 @@
 
 		setTimeout(function(){
 			hideAlert('error')
-		}, 2000);
+		}, alertTime);
 
 		//return resetLevel();
 		return;

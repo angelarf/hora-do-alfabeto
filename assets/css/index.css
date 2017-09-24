@@ -366,7 +366,8 @@ a:focus {
 	outline: none;
 	background-color: #FFF;
 	border: 2px solid;
-	padding: 12px 24px;
+	padding: 12px 0;
+	width: 120px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
