@@ -4,39 +4,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<title>Alfabetização</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda:700|Roboto">
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
 </head>
 <body>
-	<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		<defs>
-			<symbol id="icon-star" viewBox="0 0 32 32">
-				<title>star-full</title>
-				<path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path>
-			</symbol>
-		</defs>
-	</svg>
+	<header class="header">
+		<h1 class="header__title">
+			<a href="index.html">Hora do Alfabeto</a>
+		</h1>
+		<input id="open-menu" class="click"	type="checkbox" role="presentation"/>
+		<label class="float-button" for="open-menu" role="presentation"></label>
+		<nav class="main-nav">
+			<ul class="main-nav__list main-nav__list--hidden">
+				<li class="main-nav__item" role="presentation">
+					<a  class="main-nav__link" href="#about-anchor" title="">Sobre</a>
+				</li>
+				<li class="main-nav__item" role="presentation">
+					<a  class="main-nav__link" href="#game-anchor" title="">Jogar</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
 
-
-	<!--<div class="container">
-		<img src="https://goo.gl/Fj2P2k">
-		<h1 class="page-title">Alfabetização</h1>
-	</div>-->
 	<section class="game">
 		<div class="wrapper">
 			<h2 class="game__title">Vamos brincar de aprender?</h2>
 			<p class="game__description">Selecione as letras que formam o nome da figura que aparece aqui embaixo.</p>
 			<p class="game__description">
-				Aperte <span class="proceed-text">Avançar</span> para ir para o próximo nível. Se precisar corrigir, pressione <span class="reset-text">Limpar</span>
+				Aperte <span class="proceed-text">Avançar</span> para ir para o próximo nível. Se precisar apagar tudo, pressione <span class="reset-text">Limpar</span>
 			</p>
 
-			<div class="separator" role="presentation">
-				<span class="separator__block" role="presentation"></span>
-					<svg class="icon icon-star" role="presentation"><use xlink:href="#icon-star"></use></svg>
-				<span class="separator__block" role="presentation"></span>
-			</div>
+			<span class="separator" role="presentation"></span>
 
-			<div class="game-container">
+			<div class="game-container"  id="game-anchor">
 				<div class="answer-container">
 					<figure class="answer__image">
 						<!-- image will be created automatically -->
@@ -58,16 +58,12 @@
 		</div>
 	</section>
 
-	<section class="about">
+	<section class="about" id="about-anchor">
 		<div class="wrapper">
 			<h2 class="about__title">Sobre o Projeto</h2>
 			<p class="about__description">Projeto desenvolvido para a disciplina Ensino do Pensamento Computacional do curso de Ciência da Computação na Universidade Federal de São Carlos - campus Sorocaba pelos alunos de gradução</p>
 
-			<div class="separator" role="presentation">
-				<span class="separator__block separator__block--secundary" role="presentation"></span>
-				<svg class="icon icon-star icon-secundary"><use xlink:href="#icon-star" role="presentation"></use></svg>
-				<span class="separator__block separator__block--secundary" role="presentation"></span>
-			</div>
+			<span class="separator separator--secundary" role="presentation"></span>
 
 			<h3 class="about__subtitle">Desenvolvedores:</h3>
 			<ul class="about__devs">
@@ -79,20 +75,6 @@
 					</div>
 				</li>
 				<li class="dev">
-					<img class="dev__photo" src="assets/img/angela-ferreira.jpg" alt="" width="70">
-					<div>
-						<div class="dev__name">Gustavo Eda</div>
-						<div class="dev__email">email</div>
-					</div>
-				</li>
-				<li class="dev">
-					<img class="dev__photo" src="assets/img/angela-ferreira.jpg" alt="" width="70">
-					<div>
-						<div class="dev__name">Isabela Salmeron</div>
-						<div class="dev__email">email</div>
-					</div>
-				</li>
-				<li class="dev">
 					<img class="dev__photo" src="assets/img/ricardo-mendes.jpg" alt="" width="70">
 					<div>
 						<div class="dev__name">Ricardo Mendes</div>
@@ -100,10 +82,24 @@
 					</div>
 				</li>
 				<li class="dev">
-					<img class="dev__photo" src="assets/img/angela-ferreira.jpg" alt="" width="70">
+					<img class="dev__photo" src="assets/img/gustavo-eda.jpg" alt="" width="70">
+					<div>
+						<div class="dev__name">Gustavo Eda</div>
+						<div class="dev__email">email</div>
+					</div>
+				</li>
+				<li class="dev">
+					<img class="dev__photo" src="assets/img/vitor-camillo.jpg" alt="" width="70">
 					<div>
 						<div class="dev__name">Vitor Camillo</div>
 						<div class="dev__email">email</div>
+					</div>
+				</li>
+				<li class="dev">
+					<img class="dev__photo" src="assets/img/isabela-salmeron.jpg" alt="" width="70">
+					<div>
+						<div class="dev__name">Isabela Salmeron</div>
+						<div class="dev__email">isabelasalmeron@msn.com</div>
 					</div>
 				</li>
 			</ul>
