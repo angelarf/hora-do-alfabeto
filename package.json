@@ -1,0 +1,39 @@
+{
+  "name": "letters-game",
+  "version": "1.0.0",
+  "description": "Um jogo para estimular crianças no processo de alfabetização",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"server": "gulp server",
+		"build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoostan/letters-game.git"
+  },
+  "keywords": [
+    "jogo",
+    "alfabetização"
+  ],
+  "author": "Angela Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoostan/letters-game/issues"
+  },
+  "homepage": "https://github.com/marcoostan/letters-game#readme",
+  "browserslist": [
+    "last 2 versions",
+    ">= 5%"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-copy": "^1.0.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "run-sequence": "^2.2.0"
+  }
+}

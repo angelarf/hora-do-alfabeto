@@ -107,10 +107,7 @@ a:focus {
 }
 
 .about__devs {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	margin-top: 20px;
@@ -124,15 +121,9 @@ a:focus {
 
 .dev {
 	text-align: left;
-	-ms-flex-negative: 0;
 	flex-shrink: 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
 	font-weight: normal;
 	padding: 20px;
@@ -178,16 +169,9 @@ a:focus {
 }
 
 .game-container {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
 	text-transform: uppercase;
 	font-size: 32px;
@@ -195,9 +179,7 @@ a:focus {
 }
 
 .answer-container {
-	-ms-flex-negative: 0;
 	flex-shrink: 0;
-	-ms-flex-preferred-size: 280px;
 	flex-basis: 260px;
 	padding: 0 20px;
 }
@@ -219,8 +201,6 @@ a:focus {
 }
 
 .form-game {
-	-webkit-box-flex: 0;
-	-ms-flex: 0 0;
 	flex: 0 0;
 	margin-top: 20px;
 	text-align: center;
@@ -264,62 +244,31 @@ a:focus {
 }
 
 .letters {
-	-webkit-box-flex: 2;
-	-ms-flex: 2 0 280px;
-	flex: 2 0 260px;
-
-	display: -webkit-box;
-
-	display: -ms-flexbox;
-
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
+	flex: 2 0 260px;
 	justify-content: center;
-
 	max-width: 700px;
 	padding-top: 15px;
-
 	border: solid #C4D8E8 1px;
 	border-radius: 5px;
-	-webkit-box-shadow: 0 3px 5px rgba(70, 130, 180, 0.25);
 	box-shadow: 0 3px 5px rgba(70, 130, 180, 0.25);
 }
 
 .letters__card {
-	will-change: color, background-color;
+  will-change: color, background-color;
 	background-color: #FFF;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
-
 	cursor: pointer;
 	border: #000 solid 2px;
 	border-radius: 3px;
-	margin: 0 5px 15px 5px;
+  margin: 0 5px 15px 5px;
 	width: 75px;
 	height: 75px;
-
-	-webkit-transition: color, border-color;
-
-	-o-transition: color, border-color;
-
-	-webkit-transition: color, background-color;
-
-	-o-transition: color, background-color;
-
 	transition: color, background-color;
-	-webkit-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
-	transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .letters__card--selected {
@@ -339,9 +288,6 @@ a:focus {
 	font-size: 16px;
 	margin: 4px 2px;
 	border-radius: 5px;
-	-webkit-transition-duration: 0.4s;
-	/* Safari */
-	-o-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 	cursor: pointer;
 	text-transform: uppercase;
@@ -378,11 +324,7 @@ a:focus {
 	font-size: 28px;
 	color: #4682B4;
 	margin: 60px auto 30px;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
 	background-color: #4682B4;
 }
@@ -410,17 +352,12 @@ a:focus {
 /* --------------- Header ----------------- */
 
 .header {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: nowrap;
 	flex-wrap: nowrap;
 	padding: 0 10px;
 }
 
 .header__title {
-	-webkit-box-flex: 2;
-	-ms-flex-positive: 2;
 	flex-grow: 2;
 	margin: 8px 0;
 	color: #FFF;
@@ -440,7 +377,6 @@ a:focus {
 	padding: 15px;
 	background-color: #FFF;
 	border-radius: 50%;
-	-webkit-box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
 	box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
 	border: 0;
 	outline: 0;
@@ -465,8 +401,6 @@ a:focus {
 .click:checked~.main-nav .main-nav__list {
 	visibility: visible;
 	opacity: 1;
-	-webkit-transform: translateY(45%);
-	-ms-transform: translateY(45%);
 	transform: translateY(45%);
 }
 
@@ -480,16 +414,8 @@ a:focus {
 	position: absolute;
 	top: 15px;
 	right: 20px;
-	-webkit-transition: opacity, visibility, -webkit-transform;
-	transition: opacity, visibility, -webkit-transform;
-	-o-transition: transform, opacity, visibility;
 	transition: transform, opacity, visibility;
-	-webkit-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
 	transition-duration: 0.3s;
-	-webkit-transition-timing-function: linear;
-	-o-transition-timing-function: linear;
-	transition-timing-function: linear;
 	visibility: hidden;
 	opacity: 0;
 }
@@ -522,8 +448,6 @@ a:focus {
 
 	.main-nav__list--hidden {
 		opacity: 1;
-		-webkit-transform: translateY(0);
-		-ms-transform: translateY(0);
 		transform: translateY(0);
 		visibility: visible;
 	}
@@ -534,11 +458,7 @@ a:focus {
 	}
 
 	.main-nav__link {
-		display: -webkit-box;
-		display: -ms-flexbox;
 		display: flex;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
 		align-items: center;
 		margin-bottom: 0;
 		border-radius: 0;
