@@ -34,8 +34,8 @@
 			imageSrc: 'assets/img/arvore.png'
 		},
 		{
-			name: 'presente',
-			imageSrc: 'assets/img/presente.gif'
+			name: 'carro',
+			imageSrc: 'assets/img/carro.png'
 		},
 		{
 			name: 'urso',
@@ -50,8 +50,8 @@
 			imageSrc: 'assets/img/peixe.png'
 		},
 		{
-			name: 'lanche',
-			imageSrc: 'assets/img/lanche.png'
+			name: 'casa',
+			imageSrc: 'assets/img/casa.png'
 		}
 	];
 
@@ -162,6 +162,9 @@
 	var endGame = function() {
 		//clearClasses(ui.letters,'letters__card--selected');
 		alert('Fim do jogo!');
+
+		if(sessionStorage)
+			return sessionStorage.setItem('level', 0);
 	}
 
 	//Go to next level
@@ -171,7 +174,7 @@
 		if (level === objects.length) {
 			return endGame();
 		} else {
-			alert('Acertou!');
+			alert('Acertou');
 			saveLevel(level);
 			return setupLevel();
 		}
@@ -210,15 +213,23 @@
 
 	var saveLevel = function(currentLevel) {
 		level = currentLevel;
-		return sessionStorage.setItem('level', level);
+
+		// IE bug.
+		if(sessionStorage)
+			return sessionStorage.setItem('level', level);
 	}
 
 	//Get the current level saved in session storage
 	var getSavedLevel = function() {
-		if(sessionStorage.getItem('level', level)) {
-			return new Number(sessionStorage.getItem('level', level));
-		} else {
-			sessionStorage.setItem('level', 0);
+		// IE bug.
+		if(sessionStorage) {
+
+			if(sessionStorage.getItem('level', level)) {
+				return new Number(sessionStorage.getItem('level', level));
+			} else {
+				sessionStorage.setItem('level', 0);
+			}
+
 		}
 
 		return 0;

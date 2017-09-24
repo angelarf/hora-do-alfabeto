@@ -15,6 +15,7 @@ body {
 	background-color: #4682B4;
 	font-size: 10px;
 	font-family: 'Roboto', sans-serif;
+	position: relative;
 }
 
 ul {
@@ -47,7 +48,10 @@ a:focus {
 
 .icon--cross::before {
 	content: '\ea0f';
-	font-size: 22px;
+}
+
+.icon--checkmark::before {
+	content: '\ea10';
 }
 
 .game__title,
@@ -108,16 +112,13 @@ a:focus {
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	-webkit-box-pack: start;
-	-ms-flex-pack: start;
 	justify-content: flex-start;
 	margin-top: 20px;
 }
 
 @media (min-width: 767px) {
 	.about__devs {
-		-ms-flex-pack: distribute;
-		justify-content: space-around;
+		justify-content: center;
 	}
 }
 
@@ -136,6 +137,12 @@ a:focus {
 	font-weight: normal;
 	padding: 20px;
 	margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+	.dev {
+		flex-basis: 80%;
+	}
 }
 
 .dev__photo {
@@ -191,7 +198,8 @@ a:focus {
 	-ms-flex-negative: 0;
 	flex-shrink: 0;
 	-ms-flex-preferred-size: 280px;
-	flex-basis: 280px;
+	flex-basis: 260px;
+	padding: 0 20px;
 }
 
 @media (min-width: 767px) {
@@ -258,7 +266,7 @@ a:focus {
 .letters {
 	-webkit-box-flex: 2;
 	-ms-flex: 2 0 280px;
-	flex: 2 0 280px;
+	flex: 2 0 260px;
 
 	display: -webkit-box;
 
@@ -296,9 +304,9 @@ a:focus {
 	cursor: pointer;
 	border: #000 solid 2px;
 	border-radius: 3px;
-	margin: 0 10px 15px 0;
-	width: 80px;
-	height: 80px;
+	margin: 0 5px 15px 5px;
+	width: 75px;
+	height: 75px;
 
 	-webkit-transition: color, border-color;
 
@@ -330,7 +338,7 @@ a:focus {
 	display: inline-block;
 	font-size: 16px;
 	margin: 4px 2px;
-	border-radius: 4px;
+	border-radius: 5px;
 	-webkit-transition-duration: 0.4s;
 	/* Safari */
 	-o-transition-duration: 0.4s;
@@ -419,6 +427,9 @@ a:focus {
 }
 
 /* --------------- Menu ----------------- */
+.float-button {
+	cursor: pointer;
+}
 
 .float-button::after {
 	content: '\e9bd';
@@ -431,7 +442,6 @@ a:focus {
 	border-radius: 50%;
 	-webkit-box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
 	box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
-	cursor: pointer;
 	border: 0;
 	outline: 0;
 	color: #4682B4;
