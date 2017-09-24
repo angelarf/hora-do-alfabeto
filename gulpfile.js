@@ -5,7 +5,7 @@ const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
 
 gulp.task('copy', () => {
-	return gulp.src(['index.html', './assets/img/**/*', './assets/js/**/*'])
+	return gulp.src(['index.html', './assets/img/**/*', './assets/js/**/*', './assets/fonts/**/*'])
 		.pipe(copy('./public'));
 });
 
@@ -36,7 +36,7 @@ gulp.task('browser-sync', () => {
 		}
 	});
 
-	gulp.watch(['index.html', 'assets/img/**/*', 'assets/js/**/*'], ['server-watch']);
+	gulp.watch(['index.html', 'assets/img/**/*', 'assets/js/**/*', './assets/fonts/**/*'], ['server-watch']);
 	gulp.watch('assets/css/*.css', ['server-watch']);
 });
 

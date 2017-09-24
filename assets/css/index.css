@@ -38,22 +38,6 @@ a:focus {
 	color: #e5f3ff;
 }
 
-.icon {
-	font-family: 'icomoon';
-}
-
-.icon--home::before {
-	content: '\e901';
-}
-
-.icon--cross::before {
-	content: '\ea0f';
-}
-
-.icon--checkmark::before {
-	content: '\ea10';
-}
-
 .game__title,
 .about__title,
 .about__subtitle,
@@ -200,7 +184,108 @@ a:focus {
 	width: 100%;
 }
 
+.answer__feedback {
+	color: #FFF;
+	transition: transform, visibility, opacity;
+	transition-duration: 0.4s;
+	visibility: visible;
+	opacity: 1;
+	padding: 15px;
+	border-radius: 50%;
+	box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
+	font-family: 'icomoon';
+
+	position: absolute;
+	top: 15px;
+	right: -20px;
+	z-index: 2;
+
+	display: flex;
+	align-items: center;
+}
+
+.answer__feedback--success {
+	background-color: #4CAF50;
+}
+
+.answer__feedback--success::before {
+	content: '\ea10';
+}
+
+.answer__feedback--error {
+	background-color: #B30F00;
+}
+
+.answer__feedback--error::before {
+	content: '\ea0f';
+}
+
+.answer__feedback--atention {
+	background-color: #F95C3F;
+	padding: 13px;
+}
+
+.answer__feedback--atention::before {
+	content: '\ea07';
+	margin-bottom: 5px;
+}
+
+.answer__message {
+	display: block;
+	width: 100%;
+	padding: 20px 0;
+	background-color: #FFF;
+	border: 3px solid;
+	border-radius: 5px;
+	font-size: 24px;
+	font-weight: bold;
+	transition: transform, visibility, opacity;
+	transition-duration: 0.4s;
+	visibility: visible;
+	opacity: 1;
+
+	position: absolute;
+	bottom: 4px;
+}
+
+.answer__feedback--hidden,
+.answer__message--hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.answer__feedback--success ~ .answer__message {
+	color: #4CAF50;
+	border-color: #4CAF50;
+}
+
+.answer__feedback--success ~ .answer__message::before {
+	content:'Parabéns!';
+}
+
+.answer__feedback--error ~ .answer__message {
+	color: #B30F00;
+	border-color: #B30F00;
+}
+
+.answer__feedback--error ~ .answer__message::before {
+	content:'Oops! Tente de novo';
+	text-transform: none;
+}
+
+.answer__feedback--atention ~ .answer__message {
+	color: #F95C3F;
+	border-color: #F95C3F;
+}
+
+.answer__feedback--atention ~ .answer__message::before {
+	content:'Máximo de letras atingido';
+	font-size: 20px;
+	text-transform: none;
+}
+
 .form-game {
+	position: relative;
 	flex: 0 0;
 	margin-top: 20px;
 	text-align: center;
@@ -252,7 +337,7 @@ a:focus {
 	padding-top: 15px;
 	border: solid #C4D8E8 1px;
 	border-radius: 5px;
-	box-shadow: 0 3px 5px rgba(70, 130, 180, 0.25);
+	box-shadow: 3px 3px 5px rgba(70, 130, 180, 0.25);
 }
 
 .letters__card {

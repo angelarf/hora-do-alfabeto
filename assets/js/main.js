@@ -2,6 +2,8 @@
 	//Elements of interface
 	let ui = {
 		letters: '',
+		feedback: document.querySelector('.answer__feedback'),
+		message: document.querySelector('.answer__message'),
 		menu: document.querySelector('.main-nav__list'),
 		lettersContainer: document.querySelector('.letters'),
 		image: document.querySelector('.answer__image'),
@@ -54,6 +56,18 @@
 			imageSrc: 'assets/img/casa.png'
 		}
 	];
+
+	var showAlert = function(type) {
+		ui.feedback.classList.add('answer__feedback--' + type);
+		ui.message.classList.remove('answer__message--hidden');
+		ui.feedback.classList.remove('answer__feedback--hidden');
+	}
+
+	var hideAlert = function(type) {
+		ui.feedback.classList.remove('answer__feedback--' + type);
+		ui.message.classList.add('answer__message--hidden');
+		ui.feedback.classList.add('answer__feedback--hidden');
+	}
 
 	var couldSelect = function() {
 		return ui.answer.value.length < objects[level].name.length;
@@ -146,7 +160,12 @@
 		} else if (couldSelect()) {
 			printValue(elementSelected.innerText, ui.answer);
 		} else {
-				return alert('Muitas letras');
+				showAlert('atention');
+				setTimeout(function(){
+					hideAlert('atention');
+				}, 2000);
+
+				return;
 		}
 
 		return toggleClass(elementSelected, 'letters__card--selected');
@@ -174,9 +193,16 @@
 		if (level === objects.length) {
 			return endGame();
 		} else {
-			alert('Acertou');
+			showAlert('success');
+
 			saveLevel(level);
-			return setupLevel();
+
+			var timeoutID = setTimeout(function () {
+				hideAlert('success');
+				setupLevel();
+			}, 2000);
+
+			return saveLevel(level);
 		}
 	}
 
@@ -198,8 +224,14 @@
 	}
 
 	var tryAgain = function() {
-		alert('You should try again.');
+		showAlert('error');
+
+		setTimeout(function(){
+			hideAlert('error')
+		}, 2000);
+
 		//return resetLevel();
+		return;
 	}
 
 	// Validate the answer. If it's correct go to next level, otherwise 'tryAgain'
