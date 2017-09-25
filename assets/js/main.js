@@ -2,12 +2,14 @@
 	//Elements of interface
 	let ui = {
 		letters: '',
+		endGameAlert: document.querySelector('.restart-game'),
 		feedback: document.querySelector('.answer__feedback'),
 		message: document.querySelector('.answer__message'),
 		menu: document.querySelector('.main-nav__list'),
 		lettersContainer: document.querySelector('.letters'),
 		image: document.querySelector('.answer__image'),
 		answer: document.querySelector('.answer-js'),
+		btnRestart: document.querySelector('.button--restart'),
 		btnSend: document.querySelector('.button--send'),
 		btnReset: document.querySelector('.button--reset')
 	}
@@ -179,9 +181,18 @@
 		});
 	}
 
+	// Restart game
+	var restartGame = function() {
+		toggleClass(ui.endGameAlert, 'restart-game--hidden');
+		saveLevel(0);
+		setupLevel();
+	}
+
 	var endGame = function() {
-		//clearClasses(ui.letters,'letters__card--selected');
-		alert('Fim do jogo!');
+		clearClasses(ui.letters,'letters__card--selected');
+		toggleClass(ui.endGameAlert, 'restart-game--hidden');
+
+		console.log('OI');
 
 		if(sessionStorage)
 			return sessionStorage.setItem('level', 0);
@@ -189,22 +200,21 @@
 
 	//Go to next level
 	var nextLevel = function() {
-		level++;
+		showAlert('success');
 
-		if (level === objects.length) {
-			return endGame();
-		} else {
-			showAlert('success');
-
-			saveLevel(level);
-
-			var timeoutID = setTimeout(function () {
-				hideAlert('success');
+		var timeoutID = setTimeout(function () {
+			hideAlert('success');
+			level++;
+			if (level === objects.length) {
+				return endGame();
+			} else {
+				saveLevel(level);
 				setupLevel();
-			}, alertTime);
+				return saveLevel(level);
+			}
+		}, alertTime);
 
-			return saveLevel(level);
-		}
+		return;
 	}
 
 	//Clear the answer
@@ -216,12 +226,6 @@
 	var resetLevel = function() {
 		clearClasses(ui.letters,'letters__card--selected');
 		return clearAnswer();
-	}
-
-	// Restart game
-	var restartGame = function() {
-		saveLevel(0);
-		setupLevel();
 	}
 
 	var tryAgain = function() {
@@ -285,6 +289,7 @@
 		level = getSavedLevel();
 		setupLevel();
 
+		ui.btnRestart.addEventListener('click', restartGame);
 		ui.btnSend.addEventListener('click', validateAnswer);
 		ui.btnReset.addEventListener('click', resetLevel);
 		document.addEventListener('keyup', function (e) {

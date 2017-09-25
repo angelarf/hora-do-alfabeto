@@ -41,7 +41,8 @@ a:focus {
 .game__title,
 .about__title,
 .about__subtitle,
-.header__title {
+.header__title,
+.restart-game__title {
 	font-family: 'Merienda', cursive;
 	font-weight: 700;
 }
@@ -63,7 +64,9 @@ a:focus {
 
 .game__title,
 .game__description,
-.about__title {
+.about__title,
+.restart-game__title,
+.restart-game__text {
 	text-align: center;
 	word-wrap: break-word;
 }
@@ -141,7 +144,8 @@ a:focus {
 	padding: 50px 0;
 }
 
-.game__title {
+.game__title,
+.restart-game__title {
 	font-size: 32px;
 	margin-bottom: 25px;
 	color: #336894;
@@ -166,6 +170,7 @@ a:focus {
 	flex-shrink: 0;
 	flex-basis: 260px;
 	padding: 0 20px;
+	position: relative;
 }
 
 @media (min-width: 767px) {
@@ -184,12 +189,17 @@ a:focus {
 	width: 100%;
 }
 
-.answer__feedback {
-	color: #FFF;
-	transition: transform, visibility, opacity;
-	transition-duration: 0.4s;
+.answer__feedback,
+.answer__message,
+.restart-game {
+	transition: opacity;
+	transition-duration: 0.7s;
 	visibility: visible;
 	opacity: 1;
+}
+
+.answer__feedback {
+	color: #FFF;
 	padding: 15px;
 	border-radius: 50%;
 	box-shadow: 3px 5px 5px rgba(70, 130, 180, 0.25);
@@ -239,19 +249,9 @@ a:focus {
 	border-radius: 5px;
 	font-size: 24px;
 	font-weight: bold;
-	transition: transform, visibility, opacity;
-	transition-duration: 0.4s;
-	visibility: visible;
-	opacity: 1;
 
 	position: absolute;
 	bottom: 4px;
-}
-
-.answer__feedback--hidden,
-.answer__message--hidden {
-	visibility: hidden;
-	opacity: 0;
 }
 
 .answer__feedback--success ~ .answer__message {
@@ -282,6 +282,34 @@ a:focus {
 	content:'Máximo de letras atingido';
 	font-size: 20px;
 	text-transform: none;
+}
+
+.restart-game {
+	background-color: #FFF;
+	text-transform: none;
+	padding: 10px;
+	font-size: 20px;
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.answer__feedback--hidden,
+.answer__message--hidden,
+.restart-game--hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.restart-game__text {
+	margin: 30px 0;
+}
+
+.restart-game > button {
+	margin-left: -1px;
 }
 
 .form-game {
@@ -385,10 +413,12 @@ a:focus {
 	color: #4CAF50;
 }
 
-.button--send:hover,
-.button--send:focus {
-	background-color: #4CAF50;
+.button:hover {
 	color: #FFF;
+}
+
+.button--send:hover {
+	background-color: #4CAF50;
 }
 
 .button--reset {
@@ -396,11 +426,21 @@ a:focus {
 	color: #B30F00;
 }
 
-.button--reset:hover,
-.button--reset:focus {
+.button--reset:hover {
 	background-color: #B30F00;
+}
+
+.button--restart {
+	width: 100%;
+	border-color: #336894;
+	background-color: #336894;
 	color: #FFF;
 }
+
+.button--restart:hover {
+	background-color: #478ac1;
+}
+
 
 .separator {
 	min-width: 130px;
